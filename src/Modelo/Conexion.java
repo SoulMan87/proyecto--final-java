@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexion {
-    final static String url = "jdbc:mysql://localhost:3306/nomina?user=root&password=" + "";
+    final static String url = "jdbc:mysql://localhost:3306/comercializadora?user=root&password=" + "";
     private static Connection conexion;
     
     public static Connection open() throws Exception{

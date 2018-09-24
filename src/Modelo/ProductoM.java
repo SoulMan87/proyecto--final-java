@@ -133,7 +133,18 @@ public class ProductoM {
 
     public CachedRowSet buscarProducto(int cod) throws Exception {
         PreparedStatement pst;
-        pst = Conexion.open().prepareCall("{Call spRegistrar(?)}");
+        pst = Conexion.open().prepareCall("{Call spConsultarProducto(?)}");
+        pst.setInt(1, cod);
+        ResultSet rta = pst.executeQuery();
+        CachedRowSet obj = new CachedRowSetImpl();
+        obj.populate(rta);
+        Conexion.open().close();
+
+        return obj;
+    }
+    public CachedRowSet consultar(int cod) throws Exception {
+        PreparedStatement pst;
+        pst = Conexion.open().prepareCall("{Call spConsultarProducto(?)}");
         pst.setInt(1, cod);
         ResultSet rta = pst.executeQuery();
         CachedRowSet obj = new CachedRowSetImpl();
@@ -143,3 +154,5 @@ public class ProductoM {
         return obj;
     }
 }
+
+
